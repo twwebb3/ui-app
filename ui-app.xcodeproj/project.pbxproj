@@ -14,6 +14,7 @@
 		99C61FFA2B4C9DE200C1C8A4 /* ui_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C61FF92B4C9DE200C1C8A4 /* ui_appTests.swift */; };
 		99C620042B4C9DE200C1C8A4 /* ui_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C620032B4C9DE200C1C8A4 /* ui_appUITests.swift */; };
 		99C620062B4C9DE200C1C8A4 /* ui_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C620052B4C9DE200C1C8A4 /* ui_appUITestsLaunchTests.swift */; };
+		99C620132B4F3BEC00C1C8A4 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C620122B4F3BEC00C1C8A4 /* MainMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		99C61FFF2B4C9DE200C1C8A4 /* ui-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ui-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C620032B4C9DE200C1C8A4 /* ui_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui_appUITests.swift; sourceTree = "<group>"; };
 		99C620052B4C9DE200C1C8A4 /* ui_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		99C620122B4F3BEC00C1C8A4 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				99C61FEA2B4C9DD800C1C8A4 /* ContentView.swift */,
 				99C61FEC2B4C9DE200C1C8A4 /* Assets.xcassets */,
 				99C61FEE2B4C9DE200C1C8A4 /* Preview Content */,
+				99C620122B4F3BEC00C1C8A4 /* MainMenuView.swift */,
 			);
 			path = "ui-app";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99C620132B4F3BEC00C1C8A4 /* MainMenuView.swift in Sources */,
 				99C61FEB2B4C9DD800C1C8A4 /* ContentView.swift in Sources */,
 				99C61FE92B4C9DD800C1C8A4 /* ui_appApp.swift in Sources */,
 			);
