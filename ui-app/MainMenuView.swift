@@ -9,6 +9,7 @@ struct MainMenuView: View {
             List {
                 NavigationLink("Text", destination: TextViewDemo())
                 NavigationLink("Button", destination: ButtonViewDemo())
+                NavigationLink("Button Flash", destination: ButtonViewFlash())
                 // Add more links to other feature demonstrations
             }
             .navigationBarTitle("SwiftUI Features")
@@ -43,4 +44,35 @@ struct ButtonViewDemo: View {
             .cornerRadius(10)
             .shadow(radius: 5)
     }
+}
+
+struct ButtonViewFlash: View {
+    @State private var showMessage = false
+    
+    var body: some View {
+        Button(action: {
+            withAnimation {
+                showMessage.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    showMessage = false
+                }
+            }
+        }) {
+            Text("Click Me")
+                .font(.title)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.blue)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+        }
+        
+        if showMessage {
+                        Text("You've clicked the button!")
+                            .font(.headline)
+                            .transition(.opacity)
+                    }
+
+    }
+
 }
