@@ -21,6 +21,9 @@ struct BasicListView: View{
                 NavigationLink("Text", destination: TextViewDemo())
                 NavigationLink("Button", destination: ButtonViewDemo())
                 NavigationLink("Button Flash", destination: ButtonViewFlash())
+                NavigationLink("VStack", destination: VStackViewDemo())
+                NavigationLink("HStack", destination: HStackViewDemo())
+                NavigationLink("ZStack", destination: ZStackViewDemo())
                 // Add more links to other feature demonstrations
             }
             .navigationBarTitle("Basic Features")
@@ -86,4 +89,40 @@ struct ButtonViewFlash: View {
 
     }
 
+}
+
+struct VStackViewDemo: View {
+    var body: some View {
+        VStack {
+            Text("Sample Text 1")
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Look at the globe above.")
+        }
+    }
+}
+
+struct HStackViewDemo: View {
+    var body: some View {
+        HStack {
+            Text("Sample Text 1")
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Look at the globe to the left.")
+        }
+    }
+}
+
+struct ZStackViewDemo: View {
+    var body: some View {
+        ZStack {
+            Text("Sample Text 1")
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Look at the globe above.")
+        }
+    }
 }
