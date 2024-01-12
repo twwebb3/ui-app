@@ -7,12 +7,23 @@ struct MainMenuView: View {
     var body: some View {
         NavigationView {
             List {
+                NavigationLink("Basic", destination: BasicListView())
+            }
+            .navigationBarTitle("SwiftUI Features")
+        }
+    }
+}
+
+struct BasicListView: View{
+    var body: some View {
+        NavigationView {
+            List {
                 NavigationLink("Text", destination: TextViewDemo())
                 NavigationLink("Button", destination: ButtonViewDemo())
                 NavigationLink("Button Flash", destination: ButtonViewFlash())
                 // Add more links to other feature demonstrations
             }
-            .navigationBarTitle("SwiftUI Features")
+            .navigationBarTitle("Basic Features")
         }
     }
 }
