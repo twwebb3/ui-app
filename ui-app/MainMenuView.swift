@@ -16,18 +16,16 @@ struct MainMenuView: View {
 
 struct BasicListView: View{
     var body: some View {
-        NavigationView {
-            List {
-                NavigationLink("Text", destination: TextViewDemo())
-                NavigationLink("Button", destination: ButtonViewDemo())
-                NavigationLink("Button Flash", destination: ButtonViewFlash())
-                NavigationLink("VStack", destination: VStackViewDemo())
-                NavigationLink("HStack", destination: HStackViewDemo())
-                NavigationLink("ZStack", destination: ZStackViewDemo())
-                // Add more links to other feature demonstrations
-            }
-            .navigationBarTitle("Basic Features")
+        List {
+            NavigationLink("Text", destination: TextViewDemo())
+            NavigationLink("Button", destination: ButtonViewDemo())
+            NavigationLink("Button Flash", destination: ButtonViewFlash())
+            NavigationLink("VStack", destination: VStackViewDemo())
+            NavigationLink("HStack", destination: HStackViewDemo())
+            NavigationLink("ZStack", destination: ZStackViewDemo())
+            // Add more links to other feature demonstrations
         }
+        .navigationBarTitle("Basic Features")
     }
 }
 
