@@ -113,14 +113,32 @@ struct HStackViewDemo: View {
     }
 }
 
+// custom button
 struct ZStackViewDemo: View {
+    @State private var isButtonPressed = false
+    
     var body: some View {
         ZStack {
-            Text("Sample Text 1")
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Look at the globe above.")
+            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .frame(width: 200, height: 60)
+                .cornerRadius(30)
+                .shadow(radius: 10)
+            
+            HStack {
+                Image(systemName: "heart.fill")
+                    .foregroundColor(.white)
+                Text("Like")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+            }
+        }
+        .onTapGesture {
+            isButtonPressed.toggle()
+        }
+        
+        if isButtonPressed {
+            Text("You clicked Like!")
+                .transition(.scale)
         }
     }
 }
