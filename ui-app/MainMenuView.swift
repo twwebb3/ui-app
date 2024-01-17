@@ -23,6 +23,8 @@ struct BasicListView: View{
             NavigationLink("VStack", destination: VStackViewDemo())
             NavigationLink("HStack", destination: HStackViewDemo())
             NavigationLink("ZStack", destination: ZStackViewDemo())
+            NavigationLink("State Wrapper", destination: StateViewDemo())
+            NavigationLink("Binding Wrapper", destination: BindingViewDemo())
             // Add more links to other feature demonstrations
         }
         .navigationBarTitle("Basic Features")
@@ -139,6 +141,38 @@ struct ZStackViewDemo: View {
         if isButtonPressed {
             Text("You clicked Like!")
                 .transition(.scale)
+        }
+    }
+}
+
+
+// state wrapper
+struct StateViewDemo: View {
+    @State private var isOn = false
+
+    var body: some View {
+        Toggle(isOn: $isOn) {
+            Text("Switch State: \(isOn ? "On" : "Off")")
+        }
+    }
+}
+
+
+// binding wrapper
+struct ChildView: View {
+    @Binding var userName: String
+
+    var body: some View {
+        TextField("Enter your name", text: $userName)
+    }
+}
+
+struct BindingViewDemo: View {
+    @State var userName: String = ""
+    var body: some View {
+        VStack {
+            Text("Username: \(userName)")
+            ChildView(userName: $userName)
         }
     }
 }
