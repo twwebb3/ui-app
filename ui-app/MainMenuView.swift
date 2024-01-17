@@ -1,5 +1,6 @@
 
 import SwiftUI
+import Combine // for @EnvironmentObject wrapper demo
 
 struct MainMenuView: View {
     @State private var selectedView = "Text"
@@ -25,6 +26,7 @@ struct BasicListView: View{
             NavigationLink("ZStack", destination: ZStackViewDemo())
             NavigationLink("State Wrapper", destination: StateViewDemo())
             NavigationLink("Binding Wrapper", destination: BindingViewDemo())
+            NavigationLink("EnvironmentObject Wrapper", destination: EnvironmentObjectDemo())
             // Add more links to other feature demonstrations
         }
         .navigationBarTitle("Basic Features")
@@ -174,5 +176,39 @@ struct BindingViewDemo: View {
             Text("Username: \(userName)")
             ChildView(userName: $userName)
         }
+    }
+}
+
+
+// environmentObject wrapper
+class UserSettings: ObservableObject {
+    @Published var username: String = "Guest"
+}
+
+struct EnvironmentObjectDemo: View {
+    var body: some View {
+        VStack {
+            HomeView()
+            SettingsView()
+        }
+        .environmentObject(UserSettings())
+    }
+}
+
+struct SettingsView: View {
+    @EnvironmentObject var userSettings: UserSettings
+
+    var body: some View {
+        TextField("Username", text: $userSettings.username)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding()
+    }
+}
+
+struct HomeView: View {
+    @EnvironmentObject var userSettings: UserSettings
+
+    var body: some View {
+        Text("Hello, \(userSettings.username)!")
     }
 }
