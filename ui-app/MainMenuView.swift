@@ -27,6 +27,7 @@ struct BasicListView: View{
             NavigationLink("State Wrapper", destination: StateViewDemo())
             NavigationLink("Binding Wrapper", destination: BindingViewDemo())
             NavigationLink("EnvironmentObject Wrapper", destination: EnvironmentObjectDemo())
+            NavigationLink("Text Input", destination: TextFieldDemo())
             // Add more links to other feature demonstrations
         }
         .navigationBarTitle("Basic Features")
@@ -212,3 +213,20 @@ struct HomeView: View {
         Text("Hello, \(userSettings.username)!")
     }
 }
+
+
+// TextField
+struct TextFieldDemo: View {
+    @State var someText: String = "Some text!"
+    
+    var body: some View {
+        VStack {
+            TextField("Enter some text:", text: $someText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            Text("Here's the text you entered: \(someText)")
+        }
+        .padding()
+    }
+}
+
