@@ -28,6 +28,7 @@ struct BasicListView: View{
             NavigationLink("Binding Wrapper", destination: BindingViewDemo())
             NavigationLink("EnvironmentObject Wrapper", destination: EnvironmentObjectDemo())
             NavigationLink("Text Input", destination: TextFieldDemo())
+            NavigationLink("Slider Input", destination: SliderViewDemo())
             // Add more links to other feature demonstrations
         }
         .navigationBarTitle("Basic Features")
@@ -230,3 +231,19 @@ struct TextFieldDemo: View {
     }
 }
 
+// slider input
+struct SliderViewDemo: View {
+    @State private var sliderValue: Double = 50 // Initial value
+
+    var body: some View {
+        VStack {
+            // Slider
+            Slider(value: $sliderValue, in: 0...100) // Range from 0 to 100
+                .padding()
+
+            // Text displaying the current value
+            Text("Current Value: \(sliderValue, specifier: "%.1f")") // Formatted to 1 decimal place
+        }
+        .padding()
+    }
+}
