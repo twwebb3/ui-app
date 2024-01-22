@@ -29,6 +29,7 @@ struct BasicListView: View{
             NavigationLink("EnvironmentObject Wrapper", destination: EnvironmentObjectDemo())
             NavigationLink("Text Input", destination: TextFieldDemo())
             NavigationLink("Slider Input", destination: SliderViewDemo())
+            NavigationLink("Toggle Input", destination: ToggleViewDemo())
             // Add more links to other feature demonstrations
         }
         .navigationBarTitle("Basic Features")
@@ -243,6 +244,26 @@ struct SliderViewDemo: View {
 
             // Text displaying the current value
             Text("Current Value: \(sliderValue, specifier: "%.1f")") // Formatted to 1 decimal place
+        }
+        .padding()
+    }
+}
+
+
+// toggle button
+struct ToggleViewDemo: View {
+    @State private var isToggleOn: Bool = false
+
+    var body: some View {
+        VStack {
+            Toggle(isOn: $isToggleOn) {
+                Text("Toggle Switch")
+            }
+            .padding()
+
+            Text(isToggleOn ? "Toggle is ON" : "Toggle is OFF")
+                .fontWeight(isToggleOn ? .bold : .regular)
+                .foregroundColor(isToggleOn ? .green : .red)
         }
         .padding()
     }
