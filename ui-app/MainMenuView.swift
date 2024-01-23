@@ -30,6 +30,7 @@ struct BasicListView: View{
             NavigationLink("Text Input", destination: TextFieldDemo())
             NavigationLink("Slider Input", destination: SliderViewDemo())
             NavigationLink("Toggle Input", destination: ToggleViewDemo())
+            NavigationLink("UserData", destination: UserDefaultsDemoView())
             // Add more links to other feature demonstrations
         }
         .navigationBarTitle("Basic Features")
@@ -266,5 +267,30 @@ struct ToggleViewDemo: View {
                 .foregroundColor(isToggleOn ? .green : .red)
         }
         .padding()
+    }
+}
+
+struct UserDefaultsDemoView: View {
+    @State private var inputText: String = ""
+    @State private var savedText: String = ""
+
+    var body: some View {
+        VStack {
+            TextField("Enter text here", text: $inputText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button("Save to UserDefaults") {
+                UserDefaults.standard.set(inputText, forKey: "SavedText")
+                savedText = inputText
+            }
+            .padding()
+
+            Text("Saved Text: \(savedText)")
+                .padding()
+        }
+        .onAppear {
+            savedText = UserDefaults.standard.string(forKey: "SavedText") ?? ""
+        }
     }
 }
