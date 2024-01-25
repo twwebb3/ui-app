@@ -9,6 +9,7 @@ struct MainMenuView: View {
         NavigationView {
             List {
                 NavigationLink("Basic", destination: BasicListView())
+                NavigationLink("Intermediate", destination: IntermediateListView())
             }
             .navigationBarTitle("SwiftUI Features")
         }
@@ -34,5 +35,14 @@ struct BasicListView: View{
             // Add more links to other feature demonstrations
         }
         .navigationBarTitle("Basic Features")
+    }
+}
+
+struct IntermediateListView: View {
+    var body: some View {
+        List {
+            NavigationLink("Static List", destination: StaticListViewDemo())
+        }
+        .navigationBarTitle("Intermediate Features")
     }
 }
