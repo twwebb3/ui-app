@@ -11,3 +11,13 @@ struct StaticListViewDemo: View {
         }
     }
 }
+
+struct DynamicListViewDemo: View {
+    let items = ["Apple", "Banana", "Orange"]
+
+    var body: some View {
+        List(items, id: \.self) { item in
+            Text(item)
+        }
+    }
+}

@@ -42,6 +42,7 @@ struct IntermediateListView: View {
     var body: some View {
         List {
             NavigationLink("Static List", destination: StaticListViewDemo())
+            NavigationLink("Dynamic List", destination: DynamicListViewDemo())
         }
         .navigationBarTitle("Intermediate Features")
     }
