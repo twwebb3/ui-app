@@ -21,3 +21,29 @@ struct DynamicListViewDemo: View {
         }
     }
 }
+
+// list with sections
+struct Fruit: Identifiable {
+    var id = UUID()
+    var name: String
+}
+
+struct FruitRowView: View {
+    var fruit: Fruit
+
+    var body: some View {
+        Text(fruit.name)
+            .padding()
+    }
+}
+
+struct CustomRowListViewDemo: View {
+    let fruits = [Fruit(name: "Apple"), Fruit(name: "Banana"), Fruit(name: "Orange")]
+
+    var body: some View {
+        List(fruits) { fruit in
+            FruitRowView(fruit: fruit)
+        }
+    }
+}
+
