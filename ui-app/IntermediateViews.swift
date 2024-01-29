@@ -47,3 +47,19 @@ struct CustomRowListViewDemo: View {
     }
 }
 
+struct SectionedListViewDemo: View {
+    var body: some View {
+        List {
+            Section(header: Text("Fruits")) {
+                Text("Apple")
+                Text("Banana")
+            }
+
+            Section(header: Text("Vegetables")) {
+                Text("Carrot")
+                Text("Tomato")
+            }
+        }
+    }
+}
+
