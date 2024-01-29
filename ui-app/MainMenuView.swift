@@ -45,6 +45,7 @@ struct IntermediateListView: View {
             NavigationLink("Dynamic List", destination: DynamicListViewDemo())
             NavigationLink("Custom Row List", destination: CustomRowListViewDemo())
             NavigationLink("Sectioned List", destination: SectionedListViewDemo())
+            NavigationLink("Basic Form", destination: BasicFormViewDemo())
         }
         .navigationBarTitle("Intermediate Features")
     }

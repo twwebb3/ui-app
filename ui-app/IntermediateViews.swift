@@ -63,3 +63,21 @@ struct SectionedListViewDemo: View {
     }
 }
 
+
+struct BasicFormViewDemo: View {
+    @State private var username: String = ""
+    @State private var password: String = ""
+
+    var body: some View {
+        Form {
+            Section(header: Text("Login Information")) {
+                TextField("Username", text: $username)
+                SecureField("Password", text: $password)
+            }
+
+            Button("Submit") {
+                Text("You've attempted to login!")
+            }
+        }
+    }
+}
