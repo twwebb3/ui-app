@@ -67,6 +67,7 @@ struct SectionedListViewDemo: View {
 struct BasicFormViewDemo: View {
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var showLoginMessage = false
 
     var body: some View {
         Form {
@@ -76,6 +77,14 @@ struct BasicFormViewDemo: View {
             }
 
             Button("Submit") {
+                showLoginMessage = true
+                // Hide the message after a delay
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    showLoginMessage = false
+                }
+            }
+
+            if showLoginMessage {
                 Text("You've attempted to login!")
             }
         }
