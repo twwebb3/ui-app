@@ -90,3 +90,36 @@ struct BasicFormViewDemo: View {
         }
     }
 }
+
+struct AlertTextFieldDemo: View {
+    @State private var textInput: String = ""
+    @State private var showAlert: Bool = false
+
+    var body: some View {
+        VStack {
+            TextField("Type here", text: $textInput)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button("Submit") {
+                if textInput.lowercased() == "alert" {
+                    showAlert = true
+                }
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Alert Triggered"),
+                    message: Text("You typed 'alert' and submitted."),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+        }
+        .padding()
+    }
+}
+
+struct AlertTextFieldDemo_Previews: PreviewProvider {
+    static var previews: some View {
+        AlertTextFieldDemo()
+    }
+}
