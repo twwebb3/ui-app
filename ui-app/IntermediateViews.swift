@@ -123,3 +123,34 @@ struct AlertTextFieldDemo_Previews: PreviewProvider {
         AlertTextFieldDemo()
     }
 }
+
+
+struct SheetViewDemo: View {
+    @State private var showingSheet = false
+
+    var body: some View {
+        Button("Show Detail View") {
+            showingSheet = true
+        }
+        .sheet(isPresented: $showingSheet) {
+            DetailView()
+        }
+    }
+}
+
+struct DetailView: View {
+    @Environment(\.presentationMode) var presentationMode
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("This is the detail view")
+                .font(.title)
+            
+            Button("Dismiss") {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .padding()
+    }
+}
+
