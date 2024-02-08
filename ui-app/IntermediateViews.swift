@@ -142,9 +142,23 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("This is the detail view")
-                .font(.title)
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Details Header")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.bottom, 20)
+            
+            // Bullet points
+            VStack(alignment: .leading, spacing: 5) {
+                ForEach(bulletPoints, id: \.self) { point in
+                    HStack {
+                        Text("•")
+                            .fontWeight(.bold)
+                        Text(point)
+                    }
+                }
+            }
+            .padding()
             
             Button("Dismiss") {
                 presentationMode.wrappedValue.dismiss()
@@ -152,5 +166,12 @@ struct DetailView: View {
         }
         .padding()
     }
+    
+    private var bulletPoints = [
+            "First point",
+            "Second point",
+            "Third point",
+            "Fourth point"
+        ]
 }
 
