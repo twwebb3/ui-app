@@ -175,3 +175,33 @@ struct DetailView: View {
         ]
 }
 
+
+struct ModalDemo: View {
+    @Environment(\.presentationMode) var presentationMode
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("This is a modal view")
+                .font(.title)
+            
+            Button("Dismiss") {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.green.edgesIgnoringSafeArea(.all))
+    }
+}
+
+struct ModalViewDemo: View {
+    @State private var showModal = false
+
+    var body: some View {
+        Button("Show Modal") {
+            showModal = true
+        }
+        .sheet(isPresented: $showModal) {
+            ModalDemo()
+        }
+    }
+}

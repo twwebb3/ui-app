@@ -48,6 +48,7 @@ struct IntermediateListView: View {
             NavigationLink("Basic Form", destination: BasicFormViewDemo())
             NavigationLink("Simple Alert", destination: AlertTextFieldDemo())
             NavigationLink("Sheets", destination: SheetViewDemo())
+            NavigationLink("Modals", destination: ModalViewDemo())
         }
         .navigationBarTitle("Intermediate Features")
     }
