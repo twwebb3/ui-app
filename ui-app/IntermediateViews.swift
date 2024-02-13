@@ -205,3 +205,25 @@ struct ModalViewDemo: View {
         }
     }
 }
+
+struct AnimationViewDemo: View {
+    // State to hold the offset for animation
+    @State private var moveCircle: Bool = false
+
+    var body: some View {
+        VStack {
+            // Circle that will move
+            Circle()
+                .frame(width: 100, height: 100)
+                .foregroundColor(.blue)
+                .offset(x: moveCircle ? 100 : -100, y: 0) // Start from -100 to move to 100
+                .animation(.easeInOut(duration: 2), value: moveCircle) // Animate the offset change
+                
+            // Button to trigger the animation
+            Button("Move Circle") {
+                moveCircle.toggle() // Toggle the state to move the circle back and forth
+            }
+            .padding(.top, 20)
+        }
+    }
+}
