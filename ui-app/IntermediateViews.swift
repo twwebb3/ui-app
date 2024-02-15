@@ -227,3 +227,51 @@ struct AnimationViewDemo: View {
         }
     }
 }
+
+struct AnimationIntermediateViewDemo: View {
+    @State private var scale: CGFloat = 1
+    @State private var angle: Double = 0
+    @State private var opacity: Double = 1
+    @State private var color: Color = .blue
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            
+            Circle()
+                .foregroundColor(color)
+                .frame(width: 100 * scale, height: 100 * scale)
+                .rotationEffect(.degrees(angle))
+                .opacity(opacity)
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 1)) {
+                        scale = 2
+                        color = .red
+                    }
+                    
+                    withAnimation(.linear(duration: 2)) {
+                        angle += 360
+                    }
+                    
+                    withAnimation(.easeInOut(duration: 1).delay(1)) {
+                        opacity = 0
+                    }
+                    
+                    // Reset after animations complete
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        withAnimation(.easeOut) {
+                            scale = 1
+                            angle = 0
+                            opacity = 1
+                            color = .blue
+                        }
+                    }
+                }
+            
+            Spacer()
+            
+            Text("Tap the Circle")
+                .font(.headline)
+        }
+    }
+}
