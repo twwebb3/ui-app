@@ -275,3 +275,54 @@ struct AnimationIntermediateViewDemo: View {
         }
     }
 }
+
+
+// back appears mirrored, why?
+struct FlipCardViewDemo: View {
+    @State private var isFlipped = false
+    @State private var degrees = 0.0
+
+    var body: some View {
+        VStack {
+            Spacer()
+            // 3D Flip Animation Container
+            ZStack {
+                // Front Side
+                CardView(content: "Front", color: .blue)
+                    .opacity(isFlipped ? 0 : 1) // Hide when flipped
+                
+                // Back Side
+                CardView(content: "Back", color: .green)
+                    .opacity(isFlipped ? 1 : 0) // Show when flipped
+            }
+            .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0)) // 3D rotation effect
+            .onTapGesture {
+                withAnimation(.linear(duration: 0.5)) {
+                    degrees += 180
+                }
+                withAnimation(.linear(duration: 0.001).delay(0.25)) {
+                    // This toggles the visibility halfway through the flip to make the flip look realistic.
+                    isFlipped.toggle()
+                }
+            }
+            Spacer()
+        }
+    }
+}
+
+struct CardView: View {
+    let content: String
+    let color: Color
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 25)
+            .fill(color)
+            .frame(width: 200, height: 300)
+            .overlay(
+                Text(content)
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+            )
+            .shadow(radius: 5)
+    }
+}
