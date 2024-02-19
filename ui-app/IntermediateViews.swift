@@ -326,3 +326,40 @@ struct CardView: View {
             .shadow(radius: 5)
     }
 }
+
+
+// Custom Text Modifier
+struct CustomTextStyle: ViewModifier {
+    var color: Color
+    var size: CGFloat
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: size, weight: .bold, design: .rounded))
+            .foregroundColor(color)
+            .shadow(color: .gray, radius: 2, x: 0, y: 2)
+    }
+}
+
+// Extension to make the modifier easier to apply
+extension View {
+    func customTextStyle(color: Color, size: CGFloat) -> some View {
+        self.modifier(CustomTextStyle(color: color, size: size))
+    }
+}
+
+struct CustomTextViewDemo: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Hello, SwiftUI!")
+                .customTextStyle(color: .blue, size: 24)
+            
+            Text("Custom Modifiers are Powerful!")
+                .customTextStyle(color: .red, size: 20)
+            
+            Text("Reuse UI Styles Effortlessly.")
+                .customTextStyle(color: .green, size: 16)
+        }
+        .padding()
+    }
+}

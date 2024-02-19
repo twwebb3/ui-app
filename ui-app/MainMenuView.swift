@@ -52,6 +52,7 @@ struct IntermediateListView: View {
             NavigationLink("Animation (simple)", destination: AnimationViewDemo())
             NavigationLink("Animation (intermediate)", destination: AnimationIntermediateViewDemo())
             NavigationLink("Animation (advanced)", destination: FlipCardViewDemo())
+            NavigationLink("Custom Text Modifier", destination: CustomTextViewDemo())
         }
         .navigationBarTitle("Intermediate Features")
     }
