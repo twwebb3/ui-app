@@ -237,7 +237,7 @@ struct ToggleViewDemo: View {
 
 struct UserDefaultsDemoView: View {
     @State private var inputText: String = ""
-    @State private var savedText: String = ""
+    private var userDefaultsManager = UserDefaultsManager()
 
     var body: some View {
         VStack {
@@ -246,16 +246,17 @@ struct UserDefaultsDemoView: View {
                 .padding()
 
             Button("Save to UserDefaults") {
-                UserDefaults.standard.set(inputText, forKey: "SavedText")
-                savedText = inputText
+                userDefaultsManager.save(text: inputText)
+                // Optionally reset inputText or handle confirmation
             }
             .padding()
 
-            Text("Saved Text: \(savedText)")
+            Text("Saved Text: \(userDefaultsManager.load())")
                 .padding()
         }
         .onAppear {
-            savedText = UserDefaults.standard.string(forKey: "SavedText") ?? ""
+            // Load saved text when the view appears
+            inputText = userDefaultsManager.load()
         }
     }
 }
