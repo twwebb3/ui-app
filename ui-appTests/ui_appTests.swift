@@ -34,3 +34,16 @@ final class ui_appTests: XCTestCase {
     }
 
 }
+
+
+class UserDefaultsManagerTests: XCTestCase {
+    func testSaveAndLoad() {
+        let manager = UserDefaultsManager()
+        let sampleText = "Test String"
+        
+        manager.save(text: sampleText)
+        let loadedText = manager.load()
+        
+        XCTAssertEqual(loadedText, sampleText, "Loaded text should match the saved text")
+    }
+}
